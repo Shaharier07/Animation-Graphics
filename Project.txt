@@ -1,0 +1,367 @@
+#include<windows.h>
+#include<GL/glut.h>
+#include<math.h>>
+#include<cstdio>
+# define PI           3.14159265358979323846
+
+
+
+GLfloat position=0.0f;   //Moving animation
+GLfloat speed=0.03f;
+
+void update(int value)
+{
+    if (position>1.0)
+        position= -1.0f;
+    position +=speed;
+    glutPostRedisplay();
+    glutTimerFunc(100,update,0);
+}
+
+void init()
+{
+    glClearColor(0.0f,0.0f,0.0f,1.0f);  //for moving function
+}
+
+float s= 0.0f;
+
+void display(){
+    glClearColor(1.0f,1.0f,1.0f,1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+   // gluOrtho2D(-2,2,-2,2);
+       glBegin(GL_QUADS);
+    glColor3ub(232, 215, 146);    //Green Color RailLine Floor
+    glVertex2f(-1,-.30);
+    glVertex2f(1,-.30);
+    glVertex2f(1,-1);
+    glVertex2f(-1,-1);
+    glEnd();
+
+
+     glBegin(GL_QUADS);
+    glColor3ub(12, 199, 28);    //Upper station Grass Color
+
+    glVertex2f(-1,.10);
+    glVertex2f(-1,-.2);
+    glVertex2f(1,-.2);
+    glVertex2f(1,.10);
+    glEnd();
+
+
+
+     glBegin(GL_QUADS);
+    glColor3ub(171, 217, 255);    //Upper sky blue color
+
+    glVertex2f(-1,.10);
+    glVertex2f(1,.10);
+    glVertex2f(1,1);
+    glVertex2f(-1,1);
+    glEnd();
+
+
+    glLineWidth(5);
+    glBegin(GL_LINES);               //Drawing RailPath
+    glColor3ub(0,0,0);
+    glVertex2f(-1,-.80);
+    glVertex2f(1,-.80);
+    glEnd();
+
+    glBegin(GL_LINES);              //Drawing RailPath
+    glColor3ub(0,0,0);
+    glVertex2f(-1,-.90);
+    glVertex2f(1,-.90);
+    glEnd();
+
+
+
+    glLineWidth(3);
+    glBegin(GL_LINES);               //Drawing RailPath inside
+    glColor3ub(0,0,0);
+    glVertex2f(-.90,-.80);
+    glVertex2f(-.90,-.90);
+    glEnd();
+
+    glBegin(GL_LINES);
+    glColor3ub(0,0,0);
+    glVertex2f(-.70,-.80);
+    glVertex2f(-.70,-.90);
+    glEnd();
+
+    glBegin(GL_LINES);               //Drawing RailPath inside
+    glColor3ub(0,0,0);
+    glVertex2f(-.50,-.80);
+    glVertex2f(-.50,-.90);
+    glEnd();
+
+    glBegin(GL_LINES);
+    glColor3ub(0,0,0);
+    glVertex2f(-.30,-.80);
+    glVertex2f(-.30,-.90);
+    glEnd();
+
+      glBegin(GL_LINES);               //Drawing RailPath inside
+    glColor3ub(0,0,0);
+    glVertex2f(-.10,-.80);
+    glVertex2f(-.10,-.90);
+    glEnd();
+
+    glBegin(GL_LINES);
+    glColor3ub(0,0,0);
+    glVertex2f(.10,-.80);
+    glVertex2f(.10,-.90);
+    glEnd();
+
+     glBegin(GL_LINES);               //Drawing RailPath inside
+    glColor3ub(0,0,0);
+    glVertex2f(.30,-.80);
+    glVertex2f(.30,-.90);
+    glEnd();
+
+    glBegin(GL_LINES);
+    glColor3ub(0,0,0);
+    glVertex2f(.50,-.80);
+    glVertex2f(.50,-.90);
+    glEnd();
+
+      glBegin(GL_LINES);               //Drawing RailPath inside
+    glColor3ub(0,0,0);
+    glVertex2f(.70,-.80);
+    glVertex2f(.70,-.90);
+    glEnd();
+
+    glBegin(GL_LINES);
+    glColor3ub(0,0,0);
+    glVertex2f(.90,-.80);
+    glVertex2f(.90,-.90);
+    glEnd();
+
+    glLoadIdentity();
+    glPushMatrix();
+    glTranslatef(position,0.0f,0.0f);                        //*********************************************************************Rail***************************
+     glBegin(GL_QUADS);
+    glColor3ub(71, 222, 245);    //Rail Body low
+    glVertex2f(.15,-.85);
+    glVertex2f(.15,-.75);
+    glVertex2f(.65,-.75);
+    glVertex2f(.75,-.85);
+    glEnd();
+
+
+     glBegin(GL_QUADS);
+    glColor3ub(255, 85, 33);    //Rail Body Big part
+    glVertex2f(.15,-.75);
+    glVertex2f(.40,-.75);
+    glVertex2f(.40,-.45);
+    glVertex2f(.15,-.45);
+    glEnd();
+
+
+     glBegin(GL_QUADS);
+    glColor3ub(255, 140, 33);    //Rail Body front small part
+    glVertex2f(.40,-.75);
+    glVertex2f(.65,-.75);
+    glVertex2f(.65,-.55);
+    glVertex2f(.40,-.55);
+    glEnd();
+
+     glBegin(GL_QUADS);
+    glColor3ub(255, 236, 33);    //Rail Body smoke can upper part
+    glVertex2f(.55,-.55);
+    glVertex2f(.6,-.55);
+    glVertex2f(.6,-.45);
+    glVertex2f(.55,-.45);
+    glEnd();
+
+     glLineWidth(9.5);
+    glBegin(GL_LINES);               //smoke upper
+    glColor3ub(255, 144, 33);
+    glVertex2f(.53,-.45);
+    glVertex2f(.62,-.45);
+    glEnd();
+
+      glLineWidth(4.5);
+    glBegin(GL_LINES);               //right side train grill body
+    glColor3ub(255, 252, 250);
+    glVertex2f(.58,-.55);
+    glVertex2f(.58,-.75);
+    glEnd();
+
+
+       glBegin(GL_QUADS);
+    glColor3ub(255, 252, 250);    //Rail Body inner white window
+    glVertex2f(.2,-.7);
+    glVertex2f(.35,-.7);
+    glVertex2f(.35,-.5);
+    glVertex2f(.2,-.5);
+    glEnd();
+
+
+   // glTranslatef(.4,-.6,0);
+     glBegin(GL_QUADS);
+    glColor3ub(255, 252, 250);    //Rail Body inner white window right side
+    glVertex2f(.45,-.6);
+    glVertex2f(.45,-.7);
+    glVertex2f(.55,-.7);
+    glVertex2f(.55,-.6);
+    glEnd();
+
+    //glLoadIdentity();
+
+
+    int i;         // Circle and Wheel of First Train front wheel
+
+    GLfloat x=.5f; GLfloat y=-.85f; GLfloat radius =.05f;
+    int triangleAmount = 25;
+
+
+    GLfloat twicePi = 2.0f * PI;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glColor3ub(161, 85, 85);
+        glVertex2f(x, y);
+        for(i = 0; i <= triangleAmount;i++) {
+            glVertex2f(
+                    x + (radius * cos(i *  twicePi / triangleAmount)),
+                y + (radius * sin(i * twicePi / triangleAmount))
+            );
+        }
+    glEnd();
+
+
+
+
+
+
+
+    int j;         // Circle and Wheel of First Train back wheel
+
+    GLfloat x1=.3f; GLfloat y1=-.85f; GLfloat radius1 =.05f;
+    int triangleAmount1 = 25;
+
+
+    GLfloat twicePi1 = 2.0f * PI;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glColor3ub(161, 85, 85);
+        glVertex2f(x1, y1);
+        for(j = 0; j <= triangleAmount1;j++) {
+            glVertex2f(
+                    x1 + (radius1 * cos(j *  twicePi1 / triangleAmount1)),
+                y1 + (radius1 * sin(j * twicePi1 / triangleAmount1))
+            );
+        }
+    glEnd();
+
+      glBegin(GL_QUADS);
+    glColor3ub(61, 212, 11);    //2nd body of train boggy
+    glVertex2f(0.05,-.85);
+    glVertex2f(0.05,-.45);
+    glVertex2f(-.4,-.45);
+    glVertex2f(-.4,-.85);
+    glEnd();
+
+
+    glBegin(GL_QUADS);
+    glColor3ub(237, 245, 235);    //2nd body of train boggy window right
+    glVertex2f(-0.15,-.6);
+    glVertex2f(0,-.6);
+    glVertex2f(0,-.5);
+    glVertex2f(-.15,-.5);
+    glEnd();
+
+
+    glBegin(GL_QUADS);
+    glColor3ub(237, 245, 235);    //2nd body of train boggy window left
+    glVertex2f(-0.2,-.6);
+    glVertex2f(-.2,-.5);
+    glVertex2f(-.35,-.5);
+    glVertex2f(-.35,-.6);
+    glEnd();
+
+
+
+ int k;         // Circle and Wheel of 2nd Train front wheel
+
+    GLfloat x4=-.1f; GLfloat y4=-.85f; GLfloat radius4 =.05f;
+    int triangleAmount4 = 25;
+
+
+    GLfloat twicePi4 = 2.0f * PI;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glColor3ub(161, 85, 85);
+        glVertex2f(x4, y4);
+        for(k = 0; k <= triangleAmount4;k++) {
+            glVertex2f(
+                    x4 + (radius4 * cos(k *  twicePi4 / triangleAmount4)),
+                y4 + (radius4 * sin(k * twicePi4 / triangleAmount4))
+            );
+        }
+    glEnd();
+
+
+
+
+
+
+
+    int l;         // Circle and Wheel of First Train back wheel
+
+    GLfloat x3=-.3f; GLfloat y3=-.85f; GLfloat radius3 =.05f;
+    int triangleAmount3 = 25;
+
+
+    GLfloat twicePi3 = 2.0f * PI;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glColor3ub(161, 85, 85);
+        glVertex2f(x3, y3);
+        for( l= 0; l<= triangleAmount1;l++) {
+            glVertex2f(
+                    x3 + (radius3 * cos(l *  twicePi3 / triangleAmount3)),
+                y3 + (radius3 * sin(l * twicePi3 / triangleAmount3))
+            );
+        }
+    glEnd();
+
+     glLineWidth(9.5);
+    glBegin(GL_LINES);               //Rail 1st attached line
+    glColor3ub(199, 83, 6);
+    glVertex2f(.15,-.8);
+    glVertex2f(.05,-.80);
+    glEnd();
+
+    glPopMatrix();
+
+                                            //******************88******************************************************************
+
+
+
+//}
+
+/*void idle()
+{
+    glutPostRedisplay();
+}*/
+
+
+
+
+
+
+
+
+
+    int main(int argc,char** argv)
+    {
+        glutInit(&argc, argv);
+        glutCreateWindow("Open");
+        glutInitWindowSize(320,320);
+        glutInitWindowPosition(50,50);
+        glutDisplayFunc(display);
+        glutIdleFunc(idle);
+         init();
+        glutTimerFunc(100,update,0);
+        glutMainLoop();
+        return 0;
+    }
